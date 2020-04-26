@@ -4,7 +4,7 @@ import { AddToDoItemForm } from './AddToDoItemForm';
 
 export const ToDoList = () => {
   const [toDoItems, setToDoItems] = useState([]);
-  
+
   const deleteItem = (itemIndex) => {
     const itemAfterDeletion = [...toDoItems];
     itemAfterDeletion.splice(itemIndex, 1);
@@ -17,12 +17,26 @@ export const ToDoList = () => {
     setToDoItems(itemAfterAddition);
   };
 
+  const checkItem = (toDoItemIndex) => {
+    const newItems = [...toDoItems];
+    newItems[toDoItemIndex].done = true;
+    setToDoItems(newItems);
+  };
+
+  const uncheckItem = (toDoItemIndex) => {
+    const newItems = [...toDoItems];
+    newItems[toDoItemIndex].done = false;
+    setToDoItems(newItems);
+  };
+
   const toDoItemsElements = toDoItems.map((toDoItem, toDoItemIndex) => {
     return (
       <ToDoItem 
         key={toDoItemIndex} 
         toDoItem={toDoItem} 
         onDelete={(event) => deleteItem(toDoItemIndex)} 
+        onCheck={() => checkItem(toDoItemIndex)}
+        onUncheck={() => uncheckItem(toDoItemIndex)}
       />
     );
   });
