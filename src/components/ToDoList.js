@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import { ToDoItem } from './ToDoItem';
+import { AddToDoItemForm } from './AddToDoItemForm';
 
 export const ToDoList = () => {
-  const [toDoItems, setToDoItems] = useState([
-    {
-      name: 'Walk dog',
-      done: false,
-    },
-    {
-      name: 'Poo',
-      done: true,
-    },
-    {
-      name: 'Eat',
-      done: true,
-    },
-  ]);
+  const [toDoItems, setToDoItems] = useState([]);
+  
   const deleteItem = (itemIndex) => {
     const itemAfterDeletion = [...toDoItems];
     itemAfterDeletion.splice(itemIndex, 1);
     setToDoItems(itemAfterDeletion);
   };
+
+  const addNewItem = (toDoItem) => {
+    const itemAfterAddition = [...toDoItems];
+    itemAfterAddition.push(toDoItem);
+    setToDoItems(itemAfterAddition);
+  };
+
   const toDoItemsElements = toDoItems.map((toDoItem, toDoItemIndex) => {
     return (
       <ToDoItem 
@@ -33,6 +29,7 @@ export const ToDoList = () => {
   return ( 
     <div>
       {toDoItemsElements}
+      <AddToDoItemForm onAddNewItem={addNewItem} />
     </div>
   );
 };
