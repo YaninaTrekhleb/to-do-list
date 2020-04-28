@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ToDoItem } from './ToDoItem';
 import { AddToDoItemForm } from './AddToDoItemForm';
 
+const maxAllowedItems = 10;
+
 export const ToDoList = () => {
   const [toDoItems, setToDoItems] = useState([]);
 
@@ -12,6 +14,9 @@ export const ToDoList = () => {
   };
 
   const addNewItem = (toDoItem) => {
+    if (toDoItems.length >= maxAllowedItems) {
+      return;
+    }
     const itemAfterAddition = [...toDoItems];
     itemAfterAddition.push(toDoItem);
     setToDoItems(itemAfterAddition);
@@ -43,7 +48,10 @@ export const ToDoList = () => {
   return ( 
     <div>
       {toDoItemsElements}
-      <AddToDoItemForm onAddNewItem={addNewItem} />
+      <AddToDoItemForm 
+        onAddNewItem={addNewItem} 
+        disabled={toDoItems.length >= maxAllowedItems}
+      />
     </div>
   );
 };

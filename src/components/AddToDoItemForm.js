@@ -6,7 +6,7 @@ export const AddToDoItemForm = (props) => {
     done: false,
   });
 
-  const {onAddNewItem} = props;
+  const {onAddNewItem, disabled} = props;
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -25,14 +25,20 @@ export const AddToDoItemForm = (props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input 
+    <form onSubmit={onSubmit} className="d-flex">
+      <input className="tasks-text"
         type="text" 
         onChange={onTaskNameChange} 
         value={newTask.name}
         required
+        disabled={disabled}
       />
-      <input type="submit" value="Add new task" />
+      <input 
+        type="submit" 
+        value="add new one" 
+        className="btn btn-secondary btn-sm add-new-one"
+        disabled={disabled}
+      />
     </form>
   )
 };

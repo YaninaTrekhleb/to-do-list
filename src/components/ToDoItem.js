@@ -16,14 +16,14 @@ export const ToDoItem = (props) => {
   }
 
   return (
-    <div>
+    <div className="added-new-task">
       <input 
         type="checkbox"
         checked={toDoItem.done}
         onChange={onChange} 
       />
-      <span style={style}>{toDoItem.name}</span>
-      <button onClick={(event) => onDelete()}>X</button>
+      <span style={style} className="to-do-item-name">{toDoItem.name}</span>
+      <button onClick={(event) => onDelete()} className="delete-task">x</button>
     </div>
   )
 };

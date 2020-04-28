@@ -4,8 +4,8 @@ import { ToDoList } from './components/ToDoList';
 
 function App() {
   return (
-    <div>
-      <h1>To Do List</h1>
+    <div className="container-md d-flex flex-column justify-content-start align-items-center">
+      <h1>things <span>to do</span></h1>
       <ToDoList />
     </div>
   );
