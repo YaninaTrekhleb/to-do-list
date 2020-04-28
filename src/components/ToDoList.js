@@ -22,16 +22,31 @@ export const ToDoList = () => {
     setToDoItems(itemAfterAddition);
   };
 
+  const sortItems = (items) => {
+    return items.sort((itemA, itemB) => {
+      if (itemA.done === true && itemB.done === true) {
+        return 0;
+      }
+      if (itemA.done === false && itemB.done === false) {
+        return 0;
+      }
+      if (itemA.done === true && itemB.done === false) {
+        return 1;
+      }
+      return -1;
+    });
+  };
+
   const checkItem = (toDoItemIndex) => {
     const newItems = [...toDoItems];
     newItems[toDoItemIndex].done = true;
-    setToDoItems(newItems);
+    setToDoItems(sortItems(newItems));
   };
 
   const uncheckItem = (toDoItemIndex) => {
     const newItems = [...toDoItems];
     newItems[toDoItemIndex].done = false;
-    setToDoItems(newItems);
+    setToDoItems(sortItems(newItems));
   };
 
   const toDoItemsElements = toDoItems.map((toDoItem, toDoItemIndex) => {
