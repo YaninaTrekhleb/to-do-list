@@ -96,6 +96,10 @@ footer {
 }
 
 @media (max-width:767px) {
+  .container-md {
+    width: 100%;
+  }
+
   .contact-links {
     display: flex;
     flex-direction: row;

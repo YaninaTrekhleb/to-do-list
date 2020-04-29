@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import { ToDoItem } from './ToDoItem';
 import { AddToDoItemForm } from './AddToDoItemForm';
 
-const maxAllowedItems = 10;
+const maxAllowedItems = 10; // not more than 10 items in To Do list.
+
+const localStorageKey = 'to-do-items';
+
+const saveState = (toDoItems) => {
+  const toItemsString = JSON.stringify(toDoItems);
+  localStorage.setItem(localStorageKey, toItemsString);
+};
+
+const restoreFromState = () => {
+  const toDoItemString = localStorage.getItem(localStorageKey);
+  const toDoItems = JSON.parse(toDoItemString);
+  return toDoItems || [];
+};
 
 export const ToDoList = () => {
-  const [toDoItems, setToDoItems] = useState([]);
-
+  const [toDoItems, setToDoItems] = useState(restoreFromState());
   const deleteItem = (itemIndex) => {
     const itemAfterDeletion = [...toDoItems];
     itemAfterDeletion.splice(itemIndex, 1);
     setToDoItems(itemAfterDeletion);
+    saveState(itemAfterDeletion);
   };
 
   const addNewItem = (toDoItem) => {
@@ -19,7 +32,9 @@ export const ToDoList = () => {
     }
     const itemAfterAddition = [...toDoItems];
     itemAfterAddition.push(toDoItem);
-    setToDoItems(itemAfterAddition);
+    const sortedItems = sortItems(itemAfterAddition);
+    setToDoItems(sortedItems);
+    saveState(sortedItems);
   };
 
   const sortItems = (items) => {
@@ -40,13 +55,17 @@ export const ToDoList = () => {
   const checkItem = (toDoItemIndex) => {
     const newItems = [...toDoItems];
     newItems[toDoItemIndex].done = true;
-    setToDoItems(sortItems(newItems));
+    const sortedItems = sortItems(newItems);
+    setToDoItems(sortedItems);
+    saveState(sortedItems);
   };
 
   const uncheckItem = (toDoItemIndex) => {
     const newItems = [...toDoItems];
     newItems[toDoItemIndex].done = false;
-    setToDoItems(sortItems(newItems));
+    const sortedItems = sortItems(newItems);
+    setToDoItems(sortedItems);
+    saveState(sortedItems);
   };
 
   const toDoItemsElements = toDoItems.map((toDoItem, toDoItemIndex) => {
