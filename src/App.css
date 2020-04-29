@@ -8,41 +8,41 @@ font-family: 'Cookie', cursive; */
 
 h1 {
   font-family: 'Dancing Script', cursive;
-  color: #877fa8;
+  color: #ffffff;
   font-size: 60px;
+  
 }
 
 .container-md {
-  background-image: url('images/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg');
+  background-image: url('images/watercolor.png');
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover; 
+  background-repeat: no-repeat;  
+  background-attachment: fixed;
   width: 600px;
   height: 100%;
   margin-top: 50px;
+  border-radius: 8px;
 }
 
 h1 span{
-  color: #f9ae91;
+  color: #6e4da5;
   font-size: 90px;
 }
 
 form input {
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
   width: 100%;
   margin-bottom: 100px;
-  /* font-size: 1.2rem;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #013f4d; */
 }
 
-/* form input[type=submit] {
-  color: #222dc4;
-} */
-
 .added-new-task {
+  display: flex;
+  justify-content: flex-start;
   font-family: 'Indie Flower', cursive;
   font-size: 30px;
+  color: #020201;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
@@ -60,20 +60,27 @@ form input {
 }
 
 .delete-task:hover {
-  background-color: #f9ae9183;
+  background-color: #9d98ae5d;
 }
 
 .tasks-text {
-  color: #bd86a6;
+  color: #020201;
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #504f4f;
+  border-bottom: 2px solid #ffffff;
   outline: none;
 }
 
 .add-new-one {
   margin-left: 20px;
+  font-weight: bolder;
+  font-size: 25px;
   background: transparent;
-  color: black;
+  color: #020201;
   width: auto;
+  border: 1px solid #7a62a1;
+}
+
+.btn-secondary:hover {
+  background-color: #9d98aeb7;
 }
