@@ -30,6 +30,7 @@ export const AddToDoItemForm = (props) => {
         type="text" 
         onChange={onTaskNameChange} 
         value={newTask.name}
+        maxLength="40"
         required
         disabled={disabled}
       />

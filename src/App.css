@@ -6,6 +6,10 @@ font-family: 'Amatic SC', cursive;
 font-family: 'Satisfy', cursive;
 font-family: 'Cookie', cursive; */
 
+body {
+  background-color: #f7f7f7;
+}
+
 h1 {
   font-family: 'Dancing Script', cursive;
   color: #ffffff;
@@ -14,7 +18,7 @@ h1 {
 }
 
 .container-md {
-  background-image: url('images/watercolor.png');
+  background-image: url('/to-do-list/images/watercolor.png');
   background-position: center;
   background-size: cover; 
   background-repeat: no-repeat;  
@@ -83,4 +87,18 @@ form input {
 
 .btn-secondary:hover {
   background-color: #9d98aeb7;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+@media (max-width:767px) {
+  .contact-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
