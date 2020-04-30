@@ -6,6 +6,6 @@
 - Sort to-do items by completion state (checked/unchecked).
 - When updating the site, previous data is stored.
 
-[▶️ Launch Demo]()
+[▶️ Launch Demo](https://yaninatrekhleb.github.io/to-do-list/)
 
 ![Demo](public/images/to-do-list-demo.gif)
